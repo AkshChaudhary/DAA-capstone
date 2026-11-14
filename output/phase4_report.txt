@@ -1,0 +1,55 @@
+======================================================================
+       MINI COURIER PLANNER
+       PHASE 4: PERFORMANCE TESTING
+       AND OPTIMIZATION
+======================================================================
+
+1. TESTING ENVIRONMENT
+Language: Python
+Timer: time.perf_counter()
+Repetitions per test: 3
+Reported time: Median execution time
+
+2. PERFORMANCE TEST RESULTS
+Algorithm                 Input    Extra         Runtime
+------------------------------------------------------------
+Dijkstra                     30       90       0.1953 ms
+Dijkstra                     80      240        1.142 ms
+Bellman-Ford                 30      180        2.098 ms
+Bellman-Ford                 80      480       38.978 ms
+Merge Sort                  500        0        3.177 ms
+Insertion Sort              500        0       26.751 ms
+Merge Sort                 2000        0       24.862 ms
+Insertion Sort             2000        0      838.995 ms
+0/1 Knapsack                 25      100       0.8353 ms
+0/1 Knapsack                 50      200        2.929 ms
+Nearest Neighbor             30        8        3.066 ms
+Nearest Neighbor             80        8       25.058 ms
+
+3. PERFORMANCE ANALYSIS
+Dijkstra uses O(V^2 + E) time with the current array-based vertex selection.
+Bellman-Ford uses O(V x E) time.
+Merge Sort uses O(n log n) time.
+Insertion Sort uses O(n^2) worst-case time.
+0/1 Knapsack uses O(n x W) time and space with the current DP table.
+Nearest Neighbor repeatedly calls Dijkstra to choose delivery stops.
+
+4. OPTIMIZATION SUGGESTIONS
+1. Use a Min Heap or Priority Queue for Dijkstra.
+2. Use an efficient adjacency list for sparse graphs.
+3. Use Merge Sort instead of Insertion Sort for large package datasets.
+4. Use a one-dimensional DP array to reduce Knapsack memory usage.
+5. Avoid repeated shortest path calculations when cached distances can be reused.
+6. Use larger and realistic datasets for further testing.
+
+5. VALIDATION
+All algorithm test executions completed successfully.
+Shortest path, sorting, capacity and route validation checks passed.
+
+6. CONCLUSION
+The Mini Courier Planner was tested using multiple dataset sizes.
+Execution times were recorded and optimization opportunities were identified.
+
+======================================================================
+PHASE 4 COMPLETED SUCCESSFULLY
+======================================================================

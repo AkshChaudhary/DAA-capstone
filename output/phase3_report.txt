@@ -1,0 +1,74 @@
+=================================================================
+       MINI COURIER PLANNER
+       PHASE 3: ROUTE MASTER
+       AND TRAFFIC PROCESSING
+=================================================================
+
+1. WEIGHTED GRAPH SUMMARY
+Total Vertices: 6
+Total Roads: 7
+Graph Type: Undirected Weighted Graph
+Edge Weight: Distance in Kilometers
+
+2. WEIGHTED ADJACENCY LIST
+1 - Courier Hub: 2 (4 km), 3 (6 km), 4 (5 km)
+2 - North Zone: 1 (4 km), 6 (3 km)
+3 - East Zone: 1 (6 km), 6 (2 km)
+4 - South Zone: 1 (5 km), 5 (4 km)
+5 - West Zone: 4 (4 km), 6 (5 km)
+6 - Central Zone: 2 (3 km), 3 (2 km), 5 (5 km)
+
+3. DIJKSTRA SHORTEST PATH ALGORITHM
+Source Vertex: 1 - Courier Hub
+
+Vertex | Distance | Shortest Path
+1 - Courier Hub | 0 km | 1
+2 - North Zone | 4 km | 1 -> 2
+3 - East Zone | 6 km | 1 -> 3
+4 - South Zone | 5 km | 1 -> 4
+5 - West Zone | 9 km | 1 -> 4 -> 5
+6 - Central Zone | 7 km | 1 -> 2 -> 6
+
+4. BELLMAN-FORD ALGORITHM
+Demonstration graph: Directed graph with a negative edge.
+Source Vertex: 1
+Negative Cycle: No
+
+Vertex | Distance | Path
+1 | 0 | 1
+2 | 4 | 1 -> 2
+3 | 2 | 1 -> 2 -> 3
+4 | 5 | 1 -> 2 -> 3 -> 4
+
+Negative Cycle Test: Detected
+
+5. NEAREST NEIGHBOR ROUTE OPTIMIZATION
+
+Selected Packages:
+P101: North Zone
+P102: East Zone
+P105: Central Zone
+P107: East Zone
+
+Unique Delivery Locations: 2 (North Zone), 3 (East Zone), 6 (Central Zone)
+
+Optimized Delivery Route:
+1 (Courier Hub) -> 2 (North Zone) -> 6 (Central Zone) -> 3 (East Zone) -> 1 (Courier Hub)
+
+Total Route Distance: 15 km
+Courier Returns to Hub: Yes
+
+6. ALGORITHM COMPLEXITY
+Dijkstra: O(V^2 + E)
+Bellman-Ford: O(V x E)
+Nearest Neighbor: O(V x (V^2 + E))
+
+7. OBSERVATION
+Dijkstra finds shortest paths for non-negative road weights.
+Bellman-Ford supports negative weights and detects reachable negative cycles.
+Nearest Neighbor approximates a delivery tour by choosing the nearest unvisited delivery location.
+The route uses shortest road paths between selected stops.
+
+=================================================================
+PHASE 3 COMPLETED SUCCESSFULLY
+=================================================================

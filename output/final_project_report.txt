@@ -1,0 +1,401 @@
+===========================================================================
+             MINI COURIER PLANNER
+             FINAL PROJECT REPORT
+             DESIGN AND ANALYSIS OF ALGORITHMS
+===========================================================================
+
+1. PROJECT INFORMATION
+Project Name: Mini Courier Planner
+Course: Design and Analysis of Algorithms
+Language: Python
+Project Type: Algorithm Based Courier Route Planning System
+Student: Vipin Tanwar
+Roll Number: 2501350071
+
+2. PROJECT OBJECTIVE
+The objective is to develop a courier planning system that prioritizes packages, optimizes vehicle loading, calculates shortest routes and plans multiple deliveries.
+
+3. TECHNOLOGIES USED
+Programming Language: Python
+Editor: Visual Studio Code
+Data Storage: CSV Files
+Performance Testing: time.perf_counter()
+
+4. ALGORITHMS IMPLEMENTED
+Adjacency Matrix: O(V^2)
+Adjacency List: O(V + E)
+Merge Sort: O(n log n)
+Insertion Sort: O(n^2)
+Greedy Approach: Depends on implementation
+0/1 Knapsack DP: O(n x W)
+Dijkstra: O(V^2 + E)
+Bellman-Ford: O(V x E)
+Nearest Neighbor: O(V x (V^2 + E))
+
+5. PROJECT PHASES
+Phase 1: Design and Planning
+Phase 2: Package Prioritization and Vehicle Loading
+Phase 3: Route Master and Traffic Processing
+Phase 4: Performance Testing and Optimization
+Phase 5: Final Report and Demonstration
+
+6. FINAL PROJECT RESULTS
+Total Locations: 6
+Total Roads: 7
+Selected Packages: P101, P102, P105, P107
+Vehicle Capacity: 15 kg
+Total Loaded Weight: 14 kg
+Total Package Benefit: 370
+Optimized Delivery Tour: 1 -> 2 -> 6 -> 3 -> 1
+Total Route Distance: 15 km
+
+7. PERFORMANCE TESTING
+Performance results were collected using multiple input sizes and repeated execution.
+Median execution time was used for comparison.
+
+8. OPTIMIZATION
+Priority queues can improve Dijkstra performance.
+Merge Sort is suitable for large package datasets.
+One-dimensional DP can reduce Knapsack memory usage.
+Caching can reduce repeated shortest path calculations.
+
+9. LIMITATIONS
+The project uses demonstration road distances.
+Real-time traffic information is not integrated.
+Nearest Neighbor generates an approximate delivery tour.
+The system currently uses a predefined sample dataset.
+
+10. FUTURE SCOPE
+Integration with live traffic APIs.
+Interactive map-based route visualization.
+Dynamic vehicle capacity management.
+Multiple courier vehicles and delivery zones.
+Real-time delivery status tracking.
+
+11. CONCLUSION
+The Mini Courier Planner demonstrates the practical application of graph algorithms, sorting, greedy techniques and dynamic programming.
+The project successfully combines package selection, vehicle loading, shortest path calculation and approximate multi-stop delivery planning.
+
+12. PHASE-WISE IMPLEMENTATION REPORTS
+
+===========================================================================
+PHASE 1: DESIGN AND PLANNING
+===========================================================================
+============================================================
+       MINI COURIER PLANNER
+       PHASE 1: DESIGN AND PLANNING
+============================================================
+
+1. PROBLEM DEFINITION
+The system plans courier deliveries using graph algorithms.
+Locations represent vertices and roads represent weighted edges.
+The objective is to find efficient routes and optimize deliveries.
+
+2. DATASET SUMMARY
+Total Locations (Vertices): 6
+Total Roads (Edges): 7
+
+LOCATION DETAILS
+1: Courier Hub
+2: North Zone
+3: East Zone
+4: South Zone
+5: West Zone
+6: Central Zone
+
+3. ADJACENCY MATRIX
+0 means no direct road; other values represent km.
+    1 2 3 4 5 6
+1:    0    4    6    5    0    0
+2:    4    0    0    0    0    3
+3:    6    0    0    0    0    2
+4:    5    0    0    0    4    0
+5:    0    0    0    4    0    5
+6:    0    3    2    0    5    0
+
+4. ADJACENCY LIST
+Courier Hub: North Zone (4 km), East Zone (6 km), South Zone (5 km)
+North Zone: Courier Hub (4 km), Central Zone (3 km)
+East Zone: Courier Hub (6 km), Central Zone (2 km)
+South Zone: Courier Hub (5 km), West Zone (4 km)
+West Zone: South Zone (4 km), Central Zone (5 km)
+Central Zone: North Zone (3 km), East Zone (2 km), West Zone (5 km)
+
+5. GRAPH ANALYSIS
+Graph Type: Sparse
+Recommended Representation: Adjacency List
+Graph Connected: Yes
+Maximum Possible Edges: 15
+
+6. SPACE COMPLEXITY
+Adjacency Matrix: O(V^2)
+Adjacency List: O(V + E)
+
+7. ALGORITHM SELECTION
+
+1. Adjacency Matrix
+Purpose: Graph representation
+Reason: Stores road weights for direct edge lookup.
+
+2. Adjacency List
+Purpose: Graph representation
+Reason: Stores connected locations and road distances efficiently.
+
+3. Merge Sort
+Purpose: Package sorting
+Reason: Sorts packages by priority and deadline.
+
+4. Greedy Approach
+Purpose: Delivery decisions
+Reason: Makes locally best delivery choices at each step.
+
+5. 0/1 Knapsack (Dynamic Programming)
+Purpose: Vehicle loading
+Reason: Selects valuable packages within vehicle capacity.
+
+6. Dijkstra
+Purpose: Shortest path
+Reason: Finds shortest routes when road weights are non-negative.
+
+7. Bellman-Ford
+Purpose: Negative cycle detection
+Reason: Handles negative edge weights and detects reachable negative cycles.
+
+8. Nearest Neighbor Approximation
+Purpose: Multiple delivery stops
+Reason: Builds an approximate delivery tour by repeatedly selecting the nearest unvisited stop.
+
+8. GRAPH REPRESENTATION OBSERVATION
+Adjacency List is space efficient for sparse graphs
+
+9. PROJECT ASSUMPTIONS
+- Every location has a unique ID.
+- Roads are undirected.
+- Road distances are positive.
+- Duplicate roads are not allowed.
+- All sample distances are demonstration values.
+- Actual traffic and delivery times are not included yet.
+
+============================================================
+PHASE 1 DESIGN REPORT COMPLETED
+============================================================
+
+===========================================================================
+PHASE 2: PACKAGE PRIORITIZATION AND VEHICLE LOADING
+===========================================================================
+=================================================================
+       MINI COURIER PLANNER
+       PHASE 2: PACKAGE PRIORITIZATION
+       AND VEHICLE LOADING
+=================================================================
+
+1. PACKAGE DATASET SUMMARY
+Total Packages: 8
+Vehicle Capacity: 15 kg
+
+2. MERGE SORT - DEADLINE PRIORITIZATION
+Packages sorted in ascending order of delivery deadline:
+P103 | Deadline: 09:00 | Weight: 8 kg | Priority: High
+P101 | Deadline: 10:00 | Weight: 5 kg | Priority: High
+P107 | Deadline: 10:30 | Weight: 2 kg | Priority: High
+P105 | Deadline: 11:00 | Weight: 4 kg | Priority: High
+P102 | Deadline: 12:00 | Weight: 3 kg | Priority: Medium
+P106 | Deadline: 14:00 | Weight: 6 kg | Priority: Medium
+P108 | Deadline: 15:00 | Weight: 3 kg | Priority: Low
+P104 | Deadline: 16:00 | Weight: 2 kg | Priority: Low
+
+3. INSERTION SORT - PRIORITY BASED SORTING
+Packages sorted by High, Medium and Low priority:
+P103 | Priority: High | Deadline: 09:00 | Weight: 8 kg
+P101 | Priority: High | Deadline: 10:00 | Weight: 5 kg
+P107 | Priority: High | Deadline: 10:30 | Weight: 2 kg
+P105 | Priority: High | Deadline: 11:00 | Weight: 4 kg
+P102 | Priority: Medium | Deadline: 12:00 | Weight: 3 kg
+P106 | Priority: Medium | Deadline: 14:00 | Weight: 6 kg
+P108 | Priority: Low | Deadline: 15:00 | Weight: 3 kg
+P104 | Priority: Low | Deadline: 16:00 | Weight: 2 kg
+
+4. DYNAMIC PROGRAMMING - 0/1 KNAPSACK
+Maximum Vehicle Capacity: 15 kg
+Objective: Maximize total package benefit.
+
+5. DP TABLE
+Packages |   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+None     |   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+P101     |   0   0   0   0   0 100 100 100 100 100 100 100 100 100 100 100
+P102     |   0   0   0  70  70 100 100 100 170 170 170 170 170 170 170 170
+P103     |   0   0   0  70  70 100 100 100 170 170 170 190 190 220 220 220
+P104     |   0   0  30  70  70 100 100 130 170 170 200 200 200 220 220 250
+P105     |   0   0  30  70 110 110 140 180 180 210 210 240 280 280 310 310
+P106     |   0   0  30  70 110 110 140 180 180 210 210 240 280 280 310 310
+P107     |   0   0  90  90 120 160 200 200 230 270 270 300 300 330 370 370
+P108     |   0   0  90  90 120 160 200 200 230 270 270 300 300 330 370 370
+
+6. OPTIMAL SELECTED PACKAGE LIST
+P101 | Destination: North Zone | Weight: 5 kg | Priority: High | Benefit: 100
+P102 | Destination: East Zone | Weight: 3 kg | Priority: Medium | Benefit: 70
+P105 | Destination: Central Zone | Weight: 4 kg | Priority: High | Benefit: 110
+P107 | Destination: East Zone | Weight: 2 kg | Priority: High | Benefit: 90
+
+7. FINAL VEHICLE LOADING PLAN
+Vehicle Capacity: 15 kg
+Total Loaded Weight: 14 kg
+Remaining Capacity: 1 kg
+Total Benefit: 370
+Selected Packages: 4
+Rejected Packages: 4
+
+8. ALGORITHM COMPLEXITY
+Merge Sort: O(n log n)
+Insertion Sort: O(n^2)
+0/1 Knapsack DP: O(n x W)
+
+9. OBSERVATION
+Merge Sort efficiently arranges packages by delivery deadline.
+Insertion Sort prioritizes High, Medium and Low priority packages.
+Dynamic Programming selects the package combination with maximum total benefit within vehicle capacity.
+
+=================================================================
+PHASE 2 COMPLETED SUCCESSFULLY
+=================================================================
+
+===========================================================================
+PHASE 3: ROUTE MASTER AND TRAFFIC PROCESSING
+===========================================================================
+=================================================================
+       MINI COURIER PLANNER
+       PHASE 3: ROUTE MASTER
+       AND TRAFFIC PROCESSING
+=================================================================
+
+1. WEIGHTED GRAPH SUMMARY
+Total Vertices: 6
+Total Roads: 7
+Graph Type: Undirected Weighted Graph
+Edge Weight: Distance in Kilometers
+
+2. WEIGHTED ADJACENCY LIST
+1 - Courier Hub: 2 (4 km), 3 (6 km), 4 (5 km)
+2 - North Zone: 1 (4 km), 6 (3 km)
+3 - East Zone: 1 (6 km), 6 (2 km)
+4 - South Zone: 1 (5 km), 5 (4 km)
+5 - West Zone: 4 (4 km), 6 (5 km)
+6 - Central Zone: 2 (3 km), 3 (2 km), 5 (5 km)
+
+3. DIJKSTRA SHORTEST PATH ALGORITHM
+Source Vertex: 1 - Courier Hub
+
+Vertex | Distance | Shortest Path
+1 - Courier Hub | 0 km | 1
+2 - North Zone | 4 km | 1 -> 2
+3 - East Zone | 6 km | 1 -> 3
+4 - South Zone | 5 km | 1 -> 4
+5 - West Zone | 9 km | 1 -> 4 -> 5
+6 - Central Zone | 7 km | 1 -> 2 -> 6
+
+4. BELLMAN-FORD ALGORITHM
+Demonstration graph: Directed graph with a negative edge.
+Source Vertex: 1
+Negative Cycle: No
+
+Vertex | Distance | Path
+1 | 0 | 1
+2 | 4 | 1 -> 2
+3 | 2 | 1 -> 2 -> 3
+4 | 5 | 1 -> 2 -> 3 -> 4
+
+Negative Cycle Test: Detected
+
+5. NEAREST NEIGHBOR ROUTE OPTIMIZATION
+
+Selected Packages:
+P101: North Zone
+P102: East Zone
+P105: Central Zone
+P107: East Zone
+
+Unique Delivery Locations: 2 (North Zone), 3 (East Zone), 6 (Central Zone)
+
+Optimized Delivery Route:
+1 (Courier Hub) -> 2 (North Zone) -> 6 (Central Zone) -> 3 (East Zone) -> 1 (Courier Hub)
+
+Total Route Distance: 15 km
+Courier Returns to Hub: Yes
+
+6. ALGORITHM COMPLEXITY
+Dijkstra: O(V^2 + E)
+Bellman-Ford: O(V x E)
+Nearest Neighbor: O(V x (V^2 + E))
+
+7. OBSERVATION
+Dijkstra finds shortest paths for non-negative road weights.
+Bellman-Ford supports negative weights and detects reachable negative cycles.
+Nearest Neighbor approximates a delivery tour by choosing the nearest unvisited delivery location.
+The route uses shortest road paths between selected stops.
+
+=================================================================
+PHASE 3 COMPLETED SUCCESSFULLY
+=================================================================
+
+===========================================================================
+PHASE 4: PERFORMANCE TESTING AND OPTIMIZATION
+===========================================================================
+======================================================================
+       MINI COURIER PLANNER
+       PHASE 4: PERFORMANCE TESTING
+       AND OPTIMIZATION
+======================================================================
+
+1. TESTING ENVIRONMENT
+Language: Python
+Timer: time.perf_counter()
+Repetitions per test: 3
+Reported time: Median execution time
+
+2. PERFORMANCE TEST RESULTS
+Algorithm                 Input    Extra         Runtime
+------------------------------------------------------------
+Dijkstra                     30       90       0.1953 ms
+Dijkstra                     80      240        1.142 ms
+Bellman-Ford                 30      180        2.098 ms
+Bellman-Ford                 80      480       38.978 ms
+Merge Sort                  500        0        3.177 ms
+Insertion Sort              500        0       26.751 ms
+Merge Sort                 2000        0       24.862 ms
+Insertion Sort             2000        0      838.995 ms
+0/1 Knapsack                 25      100       0.8353 ms
+0/1 Knapsack                 50      200        2.929 ms
+Nearest Neighbor             30        8        3.066 ms
+Nearest Neighbor             80        8       25.058 ms
+
+3. PERFORMANCE ANALYSIS
+Dijkstra uses O(V^2 + E) time with the current array-based vertex selection.
+Bellman-Ford uses O(V x E) time.
+Merge Sort uses O(n log n) time.
+Insertion Sort uses O(n^2) worst-case time.
+0/1 Knapsack uses O(n x W) time and space with the current DP table.
+Nearest Neighbor repeatedly calls Dijkstra to choose delivery stops.
+
+4. OPTIMIZATION SUGGESTIONS
+1. Use a Min Heap or Priority Queue for Dijkstra.
+2. Use an efficient adjacency list for sparse graphs.
+3. Use Merge Sort instead of Insertion Sort for large package datasets.
+4. Use a one-dimensional DP array to reduce Knapsack memory usage.
+5. Avoid repeated shortest path calculations when cached distances can be reused.
+6. Use larger and realistic datasets for further testing.
+
+5. VALIDATION
+All algorithm test executions completed successfully.
+Shortest path, sorting, capacity and route validation checks passed.
+
+6. CONCLUSION
+The Mini Courier Planner was tested using multiple dataset sizes.
+Execution times were recorded and optimization opportunities were identified.
+
+======================================================================
+PHASE 4 COMPLETED SUCCESSFULLY
+======================================================================
+
+===========================================================================
+              END OF FINAL PROJECT REPORT
+===========================================================================

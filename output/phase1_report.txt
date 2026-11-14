@@ -1,0 +1,98 @@
+============================================================
+       MINI COURIER PLANNER
+       PHASE 1: DESIGN AND PLANNING
+============================================================
+
+1. PROBLEM DEFINITION
+The system plans courier deliveries using graph algorithms.
+Locations represent vertices and roads represent weighted edges.
+The objective is to find efficient routes and optimize deliveries.
+
+2. DATASET SUMMARY
+Total Locations (Vertices): 6
+Total Roads (Edges): 7
+
+LOCATION DETAILS
+1: Courier Hub
+2: North Zone
+3: East Zone
+4: South Zone
+5: West Zone
+6: Central Zone
+
+3. ADJACENCY MATRIX
+0 means no direct road; other values represent km.
+    1 2 3 4 5 6
+1:    0    4    6    5    0    0
+2:    4    0    0    0    0    3
+3:    6    0    0    0    0    2
+4:    5    0    0    0    4    0
+5:    0    0    0    4    0    5
+6:    0    3    2    0    5    0
+
+4. ADJACENCY LIST
+Courier Hub: North Zone (4 km), East Zone (6 km), South Zone (5 km)
+North Zone: Courier Hub (4 km), Central Zone (3 km)
+East Zone: Courier Hub (6 km), Central Zone (2 km)
+South Zone: Courier Hub (5 km), West Zone (4 km)
+West Zone: South Zone (4 km), Central Zone (5 km)
+Central Zone: North Zone (3 km), East Zone (2 km), West Zone (5 km)
+
+5. GRAPH ANALYSIS
+Graph Type: Sparse
+Recommended Representation: Adjacency List
+Graph Connected: Yes
+Maximum Possible Edges: 15
+
+6. SPACE COMPLEXITY
+Adjacency Matrix: O(V^2)
+Adjacency List: O(V + E)
+
+7. ALGORITHM SELECTION
+
+1. Adjacency Matrix
+Purpose: Graph representation
+Reason: Stores road weights for direct edge lookup.
+
+2. Adjacency List
+Purpose: Graph representation
+Reason: Stores connected locations and road distances efficiently.
+
+3. Merge Sort
+Purpose: Package sorting
+Reason: Sorts packages by priority and deadline.
+
+4. Greedy Approach
+Purpose: Delivery decisions
+Reason: Makes locally best delivery choices at each step.
+
+5. 0/1 Knapsack (Dynamic Programming)
+Purpose: Vehicle loading
+Reason: Selects valuable packages within vehicle capacity.
+
+6. Dijkstra
+Purpose: Shortest path
+Reason: Finds shortest routes when road weights are non-negative.
+
+7. Bellman-Ford
+Purpose: Negative cycle detection
+Reason: Handles negative edge weights and detects reachable negative cycles.
+
+8. Nearest Neighbor Approximation
+Purpose: Multiple delivery stops
+Reason: Builds an approximate delivery tour by repeatedly selecting the nearest unvisited stop.
+
+8. GRAPH REPRESENTATION OBSERVATION
+Adjacency List is space efficient for sparse graphs
+
+9. PROJECT ASSUMPTIONS
+- Every location has a unique ID.
+- Roads are undirected.
+- Road distances are positive.
+- Duplicate roads are not allowed.
+- All sample distances are demonstration values.
+- Actual traffic and delivery times are not included yet.
+
+============================================================
+PHASE 1 DESIGN REPORT COMPLETED
+============================================================

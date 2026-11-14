@@ -1,0 +1,9 @@
+package_id,destination_id,weight_kg,priority,deadline,benefit
+P101,2,5,High,10:00,100
+P102,3,3,Medium,12:00,70
+P103,4,8,High,09:00,120
+P104,5,2,Low,16:00,30
+P105,6,4,High,11:00,110
+P106,2,6,Medium,14:00,65
+P107,3,2,High,10:30,90
+P108,5,3,Low,15:00,25

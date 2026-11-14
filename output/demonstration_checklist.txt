@@ -1,0 +1,31 @@
+
+MINI COURIER PLANNER
+FINAL DEMONSTRATION CHECKLIST
+
+1. Introduce the project and its objective.
+
+2. Explain the courier locations and road network.
+
+3. Demonstrate adjacency matrix and adjacency list.
+
+4. Demonstrate Merge Sort and Insertion Sort.
+
+5. Explain the 0/1 Knapsack DP table.
+
+6. Demonstrate the selected package loading plan.
+
+7. Demonstrate Dijkstra shortest paths.
+
+8. Demonstrate Bellman-Ford negative cycle detection.
+
+9. Demonstrate Nearest Neighbor delivery route.
+
+10. Show performance comparison results.
+
+11. Explain optimization suggestions.
+
+12. Show the final project report and GitHub repository.
+
+13. Explain limitations and future scope.
+
+END OF DEMONSTRATION CHECKLIST

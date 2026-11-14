@@ -1,0 +1,75 @@
+=================================================================
+       MINI COURIER PLANNER
+       PHASE 2: PACKAGE PRIORITIZATION
+       AND VEHICLE LOADING
+=================================================================
+
+1. PACKAGE DATASET SUMMARY
+Total Packages: 8
+Vehicle Capacity: 15 kg
+
+2. MERGE SORT - DEADLINE PRIORITIZATION
+Packages sorted in ascending order of delivery deadline:
+P103 | Deadline: 09:00 | Weight: 8 kg | Priority: High
+P101 | Deadline: 10:00 | Weight: 5 kg | Priority: High
+P107 | Deadline: 10:30 | Weight: 2 kg | Priority: High
+P105 | Deadline: 11:00 | Weight: 4 kg | Priority: High
+P102 | Deadline: 12:00 | Weight: 3 kg | Priority: Medium
+P106 | Deadline: 14:00 | Weight: 6 kg | Priority: Medium
+P108 | Deadline: 15:00 | Weight: 3 kg | Priority: Low
+P104 | Deadline: 16:00 | Weight: 2 kg | Priority: Low
+
+3. INSERTION SORT - PRIORITY BASED SORTING
+Packages sorted by High, Medium and Low priority:
+P103 | Priority: High | Deadline: 09:00 | Weight: 8 kg
+P101 | Priority: High | Deadline: 10:00 | Weight: 5 kg
+P107 | Priority: High | Deadline: 10:30 | Weight: 2 kg
+P105 | Priority: High | Deadline: 11:00 | Weight: 4 kg
+P102 | Priority: Medium | Deadline: 12:00 | Weight: 3 kg
+P106 | Priority: Medium | Deadline: 14:00 | Weight: 6 kg
+P108 | Priority: Low | Deadline: 15:00 | Weight: 3 kg
+P104 | Priority: Low | Deadline: 16:00 | Weight: 2 kg
+
+4. DYNAMIC PROGRAMMING - 0/1 KNAPSACK
+Maximum Vehicle Capacity: 15 kg
+Objective: Maximize total package benefit.
+
+5. DP TABLE
+Packages |   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+None     |   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+P101     |   0   0   0   0   0 100 100 100 100 100 100 100 100 100 100 100
+P102     |   0   0   0  70  70 100 100 100 170 170 170 170 170 170 170 170
+P103     |   0   0   0  70  70 100 100 100 170 170 170 190 190 220 220 220
+P104     |   0   0  30  70  70 100 100 130 170 170 200 200 200 220 220 250
+P105     |   0   0  30  70 110 110 140 180 180 210 210 240 280 280 310 310
+P106     |   0   0  30  70 110 110 140 180 180 210 210 240 280 280 310 310
+P107     |   0   0  90  90 120 160 200 200 230 270 270 300 300 330 370 370
+P108     |   0   0  90  90 120 160 200 200 230 270 270 300 300 330 370 370
+
+6. OPTIMAL SELECTED PACKAGE LIST
+P101 | Destination: North Zone | Weight: 5 kg | Priority: High | Benefit: 100
+P102 | Destination: East Zone | Weight: 3 kg | Priority: Medium | Benefit: 70
+P105 | Destination: Central Zone | Weight: 4 kg | Priority: High | Benefit: 110
+P107 | Destination: East Zone | Weight: 2 kg | Priority: High | Benefit: 90
+
+7. FINAL VEHICLE LOADING PLAN
+Vehicle Capacity: 15 kg
+Total Loaded Weight: 14 kg
+Remaining Capacity: 1 kg
+Total Benefit: 370
+Selected Packages: 4
+Rejected Packages: 4
+
+8. ALGORITHM COMPLEXITY
+Merge Sort: O(n log n)
+Insertion Sort: O(n^2)
+0/1 Knapsack DP: O(n x W)
+
+9. OBSERVATION
+Merge Sort efficiently arranges packages by delivery deadline.
+Insertion Sort prioritizes High, Medium and Low priority packages.
+Dynamic Programming selects the package combination with maximum total benefit within vehicle capacity.
+
+=================================================================
+PHASE 2 COMPLETED SUCCESSFULLY
+=================================================================
