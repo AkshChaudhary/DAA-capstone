@@ -9,8 +9,8 @@ Project Name: Mini Courier Planner
 Course: Design and Analysis of Algorithms
 Language: Python
 Project Type: Algorithm Based Courier Route Planning System
-Student: Vipin Tanwar
-Roll Number: 2501350071
+Student: Aksh Chaudhary
+Roll Number: 2501350069
 
 2. PROJECT OBJECTIVE
 The objective is to develop a courier planning system that prioritizes packages, optimizes vehicle loading, calculates shortest routes and plans multiple deliveries.

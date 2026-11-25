@@ -77,6 +77,6 @@ distances and does not integrate live traffic.
 - Delivery tracking
 
 ## Author
-Vipin Tanwar
+Aksh Chaudhary
 K.R. Mangalam University
 Design and Analysis of Algorithms
